@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra - Connect with Community</title>
+    <!-- FONT-AWESOME -->
+    <script src="https://kit.fontawesome.com/72215895a8.js" crossorigin="anonymous"></script>
+    <style>
+        /* GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f6;
+            color: #3e4152;
+        }
+        
+        /* HEADER STYLES */
+        header {
+            background-color: white;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 0 40px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        #logo img {
+            height: 45px;
+        }
+        
+        #nav_bar {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        
+        #nav_bar li {
+            position: relative;
+        }
+        
+        #nav_bar a {
+            text-decoration: none;
+            color: #282c3f;
+            font-size: 14px;
+        }
+        
+        #nav_bar span {
+            position: absolute;
+            top: -10px;
+            right: -18px;
+            color: #ff3f6c;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        
+        #search {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f6;
+            border-radius: 4px;
+            padding: 0 10px;
+            height: 40px;
+            width: 400px;
+        }
+        
+        #search_bar {
+            background-color: transparent;
+            border: none;
+            height: 100%;
+            width: 100%;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+        
+        #search_icon {
+            color: #696e79;
+        }
+        
+        #right_icon {
+            display: flex;
+            gap: 25px;
+            font-size: 12px;
+            color: #282c3f;
+        }
+        
+        #right_icon div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #right_icon i {
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: #282c3f;
+        }
+        
+        /* COMMUNITY STYLES */
+        #community-section {
+            margin: 30px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .section-heading {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3e4152;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .reward-banner {
+            background: linear-gradient(to right, #ff3f6c, #ff7eb3);
+            border-radius: 8px;
+            padding: 25px;
+            color: white;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .reward-content h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .reward-content p {
+            font-size: 15px;
+            margin-bottom: 15px;
+            max-width: 600px;
+        }
+        
+        .reward-points {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .point-system {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 140px;
+            backdrop-filter: blur(4px);
+        }
+        
+        .point-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .point-label {
+            font-size: 14px;
+        }
+        
+        /* BODY ANALYSIS SECTION */
+        .body-analysis {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .body-analysis h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #3e4152;
+            line-height: 1.4;
+        }
+        
+        .body-analysis h2 span {
+            display: block;
+            font-weight: normal;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        
+        .analysis-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #d4d5d9;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #ff3f6c;
+        }
+        
+        .upload-icon {
+            font-size: 40px;
+            color: #d4d5d9;
+            margin-bottom: 15px;
+        }
+        
+        .upload-text {
+            color: #696b79;
+            margin-bottom: 10px;
+        }
+        
+        .upload-note {
+            font-size: 12px;
+            color: #94969f;
+        }
+        
+        #photoUpload {
+            display: none;
+        }
+        
+        .preview-container {
+            margin-top: 15px;
+            display: none;
+        }
+        
+        #imagePreview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+        
+        .measurements {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .input-group {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #535766;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d4d5d9;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff3f6c;
+        }
+        
+        .analyze-btn {
+            background: #ff3f6c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s ease;
+            margin-top: 10px;
+        }
+        
+        .analyze-btn:hover {
+            background: #e62e5c;
+        }
+        
+        .analysis-result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f6;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result-heading {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #3e4152;
+        }
+        
+        .body-type {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #535766;
+        }
+        
+        .recommended-communities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .recommended-community {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recommended-community img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .recommended-community .community-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #282c3f;
+        }
+        
+        .recommended-community .community-members {
+            color: #696b79;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        /* COMMUNITIES CAROUSEL */
+        .communities-container {
+            position: relative;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .community-grid {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            padding: 10px 0;
+        }
+        
+        .community-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 0;
+        }
+        
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .community-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .community-info {
+            padding: 15px;
+        }
+        
+        .community-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #282c3f;
+        }
+        
+        .community-members {
+            color: #696b79;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .community-description {
+            color: #94969f;
+            font-size: 12px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .join-btn {
+            background: #ff3f6c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+        
+        .join-btn:hover {
+            background: #e62e5c;
+        }
+        
+        .leave-btn {
+            background: #f5f5f6;
+            color: #ff3f6c;
+            border: 1px solid #ff3f6c;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+        
+        .leave-btn:hover {
+            background: #ffeef2;
+        }
+        
+        /* UPDATED NAV ARROW STYLES - FIXED VISIBILITY */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #ff3f6c;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-arrow:hover {
+            background: #ff3f6c;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-arrow.left {
+            left: 10px;
+        }
+        
+        .nav-arrow.right {
+            right: 10px;
+        }
+        
+        .nav-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* RECOMMENDED COMMUNITIES STYLES - ALWAYS SHOW 2 CARDS */
+        .recommended-container {
+            position: relative;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .recommended-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 10px);
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .recommended-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* HOW IT WORKS SECTION - ENHANCED */
+        .how-it-works {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .how-it-works h2 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: #3e4152;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .step-card {
+            background: #f5f5f6;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            background: #ff3f6c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(255, 63, 108, 0.3);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #3e4152;
+        }
+        
+        .step-description {
+            color: #535766;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* MY COMMUNITIES BUTTON SECTION */
+        .my-communities-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .my-communities-section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #3e4152;
+        }
+        
+        .my-communities-section p {
+            color: #696b79;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .my-communities-btn {
+            background: #ff3f6c;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .my-communities-btn:hover {
+            background: #e62e5c;
+            color: white;
+        }
+        
+        /* RESPONSIVE STYLES */
+        @media all and (max-width: 1100px) {
+            .community-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+            
+            .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .measurements {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media all and (max-width: 850px) {
+            header {
+                padding: 0 20px;
+            }
+            
+            #nav_bar {
+                gap: 15px;
+            }
+            
+            #search {
+                width: 300px;
+            }
+            
+            .community-card {
+                flex: 0 0 100%;
+            }
+            
+            .reward-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .reward-points {
+                justify-content: center;
+            }
+            
+            .nav-arrow {
+                display: none;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .recommended-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .recommended-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media all and (max-width: 550px) {
+            #nav_bar {
+                display: none;
+            }
+            
+            #search {
+                width: 200px;
+            }
+            
+            .reward-points {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .point-system {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER MENU SECTION -->
+    <header>
+        <div id="logo">
+            <img src="myntra.png" alt="Myntra Logo">
+        </div>
+        <ul id="nav_bar">
+            <li><a href="#">men</a></li>
+            <li><a href="#">women</a></li>
+            <li><a href="#">kids</a></li>
+            <li><a href="#">home & living</a></li>
+            <li><a href="#">beauty</a></li>
+            <li><a href="#">studio</a><span>new</span></li>
+            <li><a href="#" style="color: #ff3f6c;">connect</a><span>new</span></li>
+        </ul>
+        <div id="search">
+            <i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+            <input type="text" id="search_bar" placeholder="Search for products, brands and more">
+        </div>
+        <div id="right_icon">
+            <div>
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+            </div>
+            <div>
+                <i class="fa-regular fa-heart"></i>
+                <span>Wishlist</span>
+            </div>
+            <div>
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Bag</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- COMMUNITY SECTION -->
+    <section id="community-section">
+        <h1 class="section-heading">Connect With Community</h1>
+        
+        <div class="reward-banner">
+            <div class="reward-content">
+                <h2>Share Your Style, Earn Rewards!</h2>
+                <p>Join communities based on your body type and share how products look on you. Help others make better purchasing decisions and earn reward points redeemable on future purchases!</p>
+            </div>
+            <div class="reward-points">
+                <div class="point-system">
+                    <div class="point-value">+2 pts</div>
+                    <div class="point-label">For sharing a photo</div>
+                </div>
+                <div class="point-system">
+                    <div class="point-value">+4 pts</div>
+                    <div class="point-label">For sharing a video</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ALL COMMUNITIES SECTION -->
+        <h2 class="section-heading">All Communities</h2>
+        <div class="communities-container">
+            <button class="nav-arrow left" id="prevArrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="community-grid" id="communitiesGrid">
+                <div class="community-card" data-community="petite">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Petite Community">
+                    <div class="community-info">
+                        <div class="community-title">Petite Fashion Community</div>
+                        <div class="community-members">12.5k members</div>
+                        <div class="community-description">For people under 5'4" (163 cm)</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card" data-community="tall">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Tall Community">
+                    <div class="community-info">
+                        <div class="community-title">Tall Fashion Community</div>
+                        <div class="community-members">8.7k members</div>
+                        <div class="community-description">For people over 5'9" (175 cm)</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card" data-community="curvy">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Curvy Community">
+                    <div class="community-info">
+                        <div class="community-title">Curvy Fashion Community</div>
+                        <div class="community-members">15.2k members</div>
+                        <div class="community-description">For people with hourglass figures</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card" data-community="athletic">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Athletic Community">
+                    <div class="community-info">
+                        <div class="community-title">Athletic Build Community</div>
+                        <div class="community-members">9.8k members</div>
+                        <div class="community-description">For people with muscular or toned builds</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card" data-community="plus-size">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Plus Size Community">
+                    <div class="community-info">
+                        <div class="community-title">Plus Size Fashion Community</div>
+                        <div class="community-members">11.3k members</div>
+                        <div class="community-description">For people who wear size 14 and up</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card" data-community="modest">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="community-img" alt="Modest Fashion Community">
+                    <div class="community-info">
+                        <div class="community-title">Modest Fashion Community</div>
+                        <div class="community-members">7.9k members</div>
+                        <div class="community-description">For people who prefer conservative styles</div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-arrow right" id="nextArrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- BODY ANALYSIS SECTION -->
+        <div class="body-analysis">
+            <h2>Don't know which to join<br><span>Let us help you find your perfect fit community</span></h2>
+            
+            <div class="analysis-form">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">Click to upload your photo</div>
+                    <div class="upload-note">For best results, wear form-fitting clothing</div>
+                    <input type="file" id="photoUpload" accept="image/*">
+                </div>
+                
+                <div class="preview-container" id="previewContainer">
+                    <img id="imagePreview" src="" alt="Preview">
+                </div>
+                
+                <div class="measurements">
+                    <div class="input-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" placeholder="e.g. 165">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" placeholder="e.g. 60">
+                    </div>
+                </div>
+                
+                <button class="analyze-btn" id="analyzeBtn">Analyze My Body Type</button>
+            </div>
+            
+            <div class="analysis-result" id="analysisResult">
+                <div class="result-heading">Your Body Analysis</div>
+                <div class="body-type" id="bodyTypeResult">Based on your measurements, we recommend these communities:</div>
+                
+                <!-- RECOMMENDED COMMUNITIES - ALWAYS SHOW 2 CARDS SIDE BY SIDE -->
+                <div class="recommended-container" id="recommendedContainer">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- ENHANCED HOW IT WORKS SECTION -->
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Join Communities</div>
+                    <div class="step-description">Find and join communities that match your body type and style preferences</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Share Content</div>
+                    <div class="step-description">Post photos or videos of products you've purchased wearing them</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Earn Points</div>
+                    <div class="step-description">Get 2 points for photos and 4 points for videos you share</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Get Upvotes</div>
+                    <div class="step-description">Receive upvotes from other community members on your content</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Redeem Rewards</div>
+                    <div class="step-description">Use your points to get discounts on future purchases</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Help Others</div>
+                    <div class="step-description">Assist fellow shoppers in making informed buying decisions</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MY COMMUNITIES BUTTON SECTION -->
+        <div class="my-communities-section">
+            <h2>Your Style Journey</h2>
+            <p>Once you join communities, you'll be able to view and manage them all in one place. Share your style, earn rewards, and connect with like-minded fashion enthusiasts!</p>
+            <a href="my-communities.html" class="my-communities-btn">View My Communities</a>
+        </div>
+    </section>
+
+    <script>
+        // Store user's joined communities
+        let userCommunities = [];
+        
+        // Community data
+        const communitiesData = {
+            'petite': {
+                name: 'Petite Fashion Community',
+                members: '12.5k members',
+                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people under 5\'4" (163 cm)'
+            },
+            'tall': {
+                name: 'Tall Fashion Community',
+                members: '8.7k members',
+                image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people over 5\'9" (175 cm)'
+            },
+            'curvy': {
+                name: 'Curvy Fashion Community',
+                members: '15.2k members',
+                image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people with hourglass figures'
+            },
+            'athletic': {
+                name: 'Athletic Build Community',
+                members: '9.8k members',
+                image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people with muscular or toned builds'
+            },
+            'plus-size': {
+                name: 'Plus Size Fashion Community',
+                members: '11.3k members',
+                image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people who wear size 14 and up'
+            },
+            'modest': {
+                name: 'Modest Fashion Community',
+                members: '7.9k members',
+                image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'For people who prefer conservative styles'
+            }
+        };
+        
+        // Carousel state
+        let currentCommunitiesIndex = 0;
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            initCarousels();
+            setupEventListeners();
+        });
+        
+        // Initialize carousels
+        function initCarousels() {
+            updateCommunitiesCarousel();
+        }
+        
+        // Set up event listeners
+        function setupEventListeners() {
+            // Navigation arrows
+            document.getElementById('prevArrow').addEventListener('click', () => scrollCommunities(-1));
+            document.getElementById('nextArrow').addEventListener('click', () => scrollCommunities(1));
+            
+            // Join/leave community buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('join-btn')) {
+                    const card = e.target.closest('.community-card, .recommended-card');
+                    const communityId = card.dataset.community;
+                    joinCommunity(communityId);
+                } else if (e.target.classList.contains('leave-btn')) {
+                    const card = e.target.closest('.community-card, .recommended-card');
+                    const communityId = card.dataset.community;
+                    leaveCommunity(communityId);
+                }
+            });
+            
+            // Photo upload functionality
+            const uploadArea = document.getElementById('uploadArea');
+            const photoUpload = document.getElementById('photoUpload');
+            const previewContainer = document.getElementById('previewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+            
+            uploadArea.addEventListener('click', function() {
+                photoUpload.click();
+            });
+            
+            photoUpload.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        previewContainer.style.display = 'block';
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+            
+            // Analyze button functionality
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const analysisResult = document.getElementById('analysisResult');
+            const bodyTypeResult = document.getElementById('bodyTypeResult');
+            
+            analyzeBtn.addEventListener('click', function() {
+                const height = parseInt(document.getElementById('height').value);
+                const weight = parseInt(document.getElementById('weight').value);
+                
+                if (!height || !weight) {
+                    alert('Please enter both height and weight');
+                    return;
+                }
+                
+                // Simple body type analysis
+                let bodyType = '';
+                let recommended = [];
+                
+                // Calculate BMI (simplified)
+                const heightInMeters = height / 100;
+                const bmi = weight / (heightInMeters * heightInMeters);
+                
+                if (height < 163) {
+                    bodyType = 'Petite';
+                    recommended = ['petite', 'modest'];
+                } else if (height > 175) {
+                    bodyType = 'Tall';
+                    recommended = ['tall', 'athletic'];
+                } else if (bmi > 25) {
+                    bodyType = 'Curvy/Plus Size';
+                    recommended = ['curvy', 'plus-size'];
+                } else if (bmi < 18.5) {
+                    bodyType = 'Slim';
+                    recommended = ['petite', 'modest'];
+                } else {
+                    bodyType = 'Average/Athletic';
+                    recommended = ['athletic', 'modest'];
+                }
+                
+                // Show results
+                bodyTypeResult.textContent = `Based on your measurements, we've identified you as ${bodyType}. We recommend these communities:`;
+                
+                // Show recommended communities
+                showRecommendedCommunities(recommended);
+                
+                // Show the result section
+                analysisResult.style.display = 'block';
+            });
+        }
+        
+        // Scroll communities carousel
+        function scrollCommunities(direction) {
+            const grid = document.getElementById('communitiesGrid');
+            const cards = grid.querySelectorAll('.community-card');
+            const cardWidth = cards[0].offsetWidth + 20; // width + gap
+            
+            // Calculate max index
+            const maxIndex = Math.ceil(cards.length / 3) - 1;
+            
+            // Update index
+            currentCommunitiesIndex += direction;
+            
+            // Ensure index is within bounds
+            if (currentCommunitiesIndex < 0) currentCommunitiesIndex = 0;
+            if (currentCommunitiesIndex > maxIndex) currentCommunitiesIndex = maxIndex;
+            
+            // Move the grid
+            grid.style.transform = `translateX(-${currentCommunitiesIndex * cardWidth * 3}px)`;
+            
+            // Update arrow states
+            updateCommunitiesCarousel();
+        }
+        
+        // Update communities carousel state
+        function updateCommunitiesCarousel() {
+            const grid = document.getElementById('communitiesGrid');
+            const cards = grid.querySelectorAll('.community-card');
+            const maxIndex = Math.ceil(cards.length / 3) - 1;
+            
+            // Update arrow states
+            document.getElementById('prevArrow').disabled = currentCommunitiesIndex === 0;
+            document.getElementById('nextArrow').disabled = currentCommunitiesIndex === maxIndex;
+        }
+        
+        // Show recommended communities (always show 2 cards side by side)
+        function showRecommendedCommunities(recommendedIds) {
+            const container = document.getElementById('recommendedContainer');
+            container.innerHTML = '';
+            
+            recommendedIds.forEach(id => {
+                if (communitiesData[id]) {
+                    const community = communitiesData[id];
+                    const isJoined = userCommunities.includes(id);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'recommended-card';
+                    card.dataset.community = id;
+                    
+                    card.innerHTML = `
+                        <img src="${community.image}" class="community-img" alt="${community.name}">
+                        <div class="community-info">
+                            <div class="community-title">${community.name}</div>
+                            <div class="community-members">${community.members}</div>
+                            <div class="community-description">${community.description}</div>
+                            ${isJoined ? 
+                                '<button class="leave-btn">Leave Community</button>' : 
+                                '<button class="join-btn">Join Community</button>'}
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                }
+            });
+        }
+        
+        // Join a community
+        function joinCommunity(communityId) {
+            if (!userCommunities.includes(communityId)) {
+                userCommunities.push(communityId);
+                
+                // Update all join buttons for this community to leave buttons
+                document.querySelectorAll(`.community-card[data-community="${communityId}"] .join-btn, .recommended-card[data-community="${communityId}"] .join-btn`).forEach(btn => {
+                    btn.classList.remove('join-btn');
+                    btn.classList.add('leave-btn');
+                    btn.textContent = 'Leave Community';
+                });
+                
+                alert(`You've joined the ${communitiesData[communityId].name}`);
+            }
+        }
+        
+        // Leave a community
+        function leaveCommunity(communityId) {
+            const index = userCommunities.indexOf(communityId);
+            if (index !== -1) {
+                userCommunities.splice(index, 1);
+                
+                // Update all leave buttons for this community to join buttons
+                document.querySelectorAll(`.community-card[data-community="${communityId}"] .leave-btn, .recommended-card[data-community="${communityId}"] .leave-btn`).forEach(btn => {
+                    btn.classList.remove('leave-btn');
+                    btn.classList.add('join-btn');
+                    btn.textContent = 'Join Community';
+                });
+                
+                alert(`You've left the ${communitiesData[communityId].name}`);
+            }
+        }
+    </script>
+</body>
+
+</html>

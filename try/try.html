@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.myntra.com</title>
+     <!-- FAVICON -->
+     <link rel="shortcut icon" type="image/png" href="/Common Files/image/favicon.png">
+    <!-- ALL CSS LINK -->
+    <link rel="stylesheet" href="/Common Files/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="header.css">
+    <!-- FONT-AWESOME -->
+    <script src="https://kit.fontawesome.com/72215895a8.js" crossorigin="anonymous"></script>
+    <style>
+        #section_1 img{
+            width: unset;
+        }
+        ol > li > span{
+            color: #505050;
+            font-weight: 700;
+        }
+        
+        /* CHATBOT STYLES */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ff3f6c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chatbot-toggle i {
+            font-size: 24px;
+        }
+        
+        .chatbot-box {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background-color: #ff3f6c;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .chatbot-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background-color: #f2f2f2;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .user-message {
+            background-color: #ff3f6c;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chatbot-input button {
+            background-color: #ff3f6c;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .suggestion-chips {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 8px;
+        }
+        
+        .chip {
+            background-color: #f2f2f2;
+            padding: 8px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .chip:hover {
+            background-color: #e5e5e5;
+        }
+        
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #888;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingAnimation {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .chat-visible {
+            display: flex !important;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="flatdiscount">
+        <i id="sidePanel" class="fa-solid fa-caret-left"></i>
+        <h1>FLAT ₹300 OFF</h1>
+    </div>
+
+    <!-- HEADER MENU SECTION -->
+    <header>
+        <div id="logo">
+            <img src="/Common Files/image/myntra-removebg-preview.png" alt="brandLogo" id="landingPage">
+        </div>
+        <ul id="nav_bar">
+            <li id="megamenu_container"><a href="../Homepages/menHomePage.html">men</a></li>
+            <li><a href="../Homepages/womenHomePage.html">women</a></li>
+            <li><a href="#">kids</a></li>
+            <li><a href="../Homepages/homeLiving.html">home & living</a></li>
+            <li><a href="#">beauty</a></li>
+            <li id="studio"><a href="#">studio</a><span>new</span></li>
+        </ul> 
+        <div id="search">
+            <input type="text" id="search_bar" placeholder="Search for products, brands and more">
+            <i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+        </div>
+        <div id="right_icon">
+            <div id="reggDropdown">
+                <!-- DROPDOWN MENU TO BE CREATED FOR LOGIN AND SIGNUP -->
+              <div id="drop">
+                  <a href="/Profile/profile.html" class="dropList">login</a>
+                  <a href="/Profile/signup.html" class="dropList">sign up</a>
+              </div>
+
+              <i class="fa-regular fa-user"></i>
+              <span>profile</span>
+          </div>
+            <div>
+                <i class="fa-regular fa-heart"></i>
+                 <a href="/wishlisht/wishlist.html">wishlist</a>  
+            </div>
+            <div>
+                <i class="fa-solid fa-bag-shopping"></i>
+                 <a href="/wishlist/cart.html">bag</a>  
+            </div>
+        </div>
+                   <!-- TOGGLE MENU -->
+                   <div id="toggle">
+                    <i class='bx bx-menu dropbtn' onclick="myFunction()"></i>
+                    <div id="myDropdown" class="dropdown-content">
+                        <div class="top">
+                            <a href="../Homepages/menHomePage.html">men</a>
+                            <a href="../Homepages/womenHomePage.html">women</a>
+                            <a href="#">kids</a>
+                            <a href="../Homepages/homeLiving.html">home & living</a>
+                            <a href="#">beauty</a>
+                            <a href="#">studio</a>
+                        </div>
+                        <div class="bottom">
+                            <i class="fa-regular fa-user fa_user" id="profile"></i>
+                            <i class="fa-regular fa-heart fa_wishlist"></i>
+                            <i class="fa-solid fa-bag-shopping fa_cart"></i>
+                        </div>               
+                    </div>
+                </div>
+    </header>
+
+    
+    <div class="slider">
+        <div class="slides">
+            <!--radio buttons start-->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <!--slide images start-->
+            <div class="slide first">
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/28/4ac3be4b-f02c-4106-8dc9-be1898a81def1648463267842-Desktop-Banner-----1920x504.jpg"  
+                alt="">
+            </div>
+            <div class="slide">
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/17/8f1a79c7-3f11-4608-9f31-30a03a606cb41647537798522-SS22-DesktopBanners-Unisex.jpg"
+                alt="">
+            </div>
+            <div class="slide">
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/17/1439d458-3f9b-4a49-830c-a47a126bb9311647456798699-Roadster_Desk_Banner.jpg"
+                alt="">
+            </div>
+            <div class="slide">
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/3/17/52df3f93-8d0f-412d-b416-fc665706199d1647456798690-Casual-Shoes_Dk.jpg"
+                alt="">
+            </div>
+        </div>
+
+        <!--manual navigation start-->
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+    </div>
+
+
+    <h1>DEALS OF THE DAY</h1>
+    <div id="deals">
+
+    </div>
+    <h1>BEST OF MYNTRA EXCLUSIVE BRANDS</h1>
+    <div id="best">
+    </div>
+    <h1>TOP PICKS</h1>
+    <div id="top">
+    </div>
+    <h1>CATEGORIES TO BAG</h1>
+    <div id="categories">
+    </div>
+    <h1>DEALS ON TOP BRANDS</h1>
+    <div id="dealsTop">
+    </div>
+    <h1>UNMISSABLE THIS SEASON</h1>
+    <div id="unmissable">
+    </div>
+    <h1>COLOURS OF THE SEASON</h1>
+    <div id="colours">
+
+    </div>
+    <h1>TOP INFLUENCERS EXCLUSIVE STYLE</h1>
+    <div id="topInfluencers"></div>
+    <h1>BUDGET PICKS INFLUENCERS LOVE</h1>
+    <div id="budget"></div>
+    <h1>TRENDING OUTFIT BY INFLUENCERS</h1>
+    <div id="trending">
+    </div>
+
+    <!-- CHATBOT CONTAINER -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fa-regular fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MCIgcj0iNDAiIGZpbGw9IiNmZjNmNmMiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjY1IiByPSI1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNjUiIHI9IjUiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNNzAgMTAwIHEzMCA0MCA2MCAwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik02MCAxNTAgcTAgNDAgODAgMCAiIHN0cm9rZT0iI2ZmM2Y2YyIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSJub25lIi8+PC9zdmc+" alt="Chatbot Avatar">
+                </div>
+                <h3>Myntra Style Assistant</h3>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! 👋 I'm your Myntra style assistant. How can I help you today?
+                </div>
+                <div class="suggestion-chips">
+                    <div class="chip" data-query="Men's casual wear">Men's casual wear</div>
+                    <div class="chip" data-query="Women's dresses">Women's dresses</div>
+                    <div class="chip" data-query="Summer fashion">Summer fashion</div>
+                    <div class="chip" data-query="Trending shoes">Trending shoes</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button id="sendMessage"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+   
+    <!-- FOOTER SECTION -->
+    <footer>
+        <section id="section_1">
+            <div id="left">
+                <div>
+                    <h4>online shopping</h4>
+                    <p>men</p>
+                    <p>women</p>
+                    <p>home & living</p>
+                    <p>beauty</p>
+                    <p>gift cards</p>
+                    <p>myntra insider<span id="latest">New</span></p>
+                </div>
+                <div>
+                  <h4>useful links</h4>
+                  <p>men</p>
+                  <p>faq</p>
+                  <p>t&c</p>
+                  <p>terms of use</p>
+                  <p>track order</p>
+                  <p>shipping</p>
+                  <p>cancellation</p>
+                  <p>returns</p>
+                  <p>whitehat</p>
+                  <p>blog</p>
+                  <p>careers</p>
+                  <p>privacy policy</p>
+                  <p>site map</p>
+                  <p>corporate information</p>
+                </div>
+                <div>
+                    <h4>experience myntra app on mobile</h4>
+                    <img src="https://bit.ly/3LluZ4L" alt="android">
+                    <img src="https://bit.ly/3DmWQys" alt="ios">
+                    <h4 id="social_connect">keep in touch</h4>
+                    <div>
+                      <i class="fa-brands fa-facebook-square"></i>
+                      <i class="fa-brands fa-twitter-square"></i>
+                      <i class="fa-brands fa-youtube"></i>
+                      <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="right">
+                <div>
+                    <img src="https://bit.ly/3JPiL47" alt="original">
+                    <p> <span>100% ORIGINAL</span> guarantee for all products at myntra.com</p>
+                </div>
+                <div>
+                    <img src="https://bit.ly/3uBalH4" alt="return_policy">
+                    <p><span>Return within 30days</span> of receiving your order</p>
+                </div>
+            </div>
+        </section>
+        <section id="section_2">
+            <h4>popular searches</h4>
+            <div></div>
+        </section>
+        <section id="section_3">
+          <a href="">sherwani</a><a href="">track pants</a><a href="">blazzers</a><a href="">sweater</a><a href="">jeans</a><a href="">suit</a><a href="">trouser</a><a href="">shalwar</a><a href="">bracelets</a><a href="">sherwani</a><a href="">cargo</a><a href="">shirt</a><a href="">sherwani</a><a href="">shelwar</a><a href="">Bracelets</a><a href="">sherwani</a><a href="">blazzers</a><a href="">sherwani</a><a href="">bracelets</a><a href="">rings</a><a href="">blazzers</a><a href="">sherwani</a><a href="">sherwani</a><a href="">sherwani</a><a href="">blazzers</a><a href="">blazzers</a><a href="">blazzers</a><a href="">shelwar</a><a href="">shalwar</a><a href="">jeans</a>
+        </section>
+        <section id="section_4">
+            <p>In case of any concern <a href="#"> contact us</a></p>
+            <p>&#169; 2022 www.myntra.com. All rights reserved.</p>
+        </section>
+        <hr>
+       <!-- <section id="section_5">
+           <h4>men's shopping at myntra: a superior experience</h4>
+           <p>Myntra is one of the best sites when it comes to online shopping for men. The finest of material, superior design and unbeatable style go into the making of our men’s shopping collection. Our range of online shopping men’s wear, accessories, footwear and personal care products are second to none. Compared with other men’s shopping sites, Myntra brings you the best price products which won’t hurt your pocket. With seasonal discounts on trendy casual wear, suits, blazers, sneakers and more, online shopping for men at Myntra just gets even more irresistible!
+          </p>
+       </section>
+       <section id="section_6">
+           <h4>online shopping for men: options unlimited</h4>
+           <p>At Myntra, our online shopping fashion for men collection features plenty of options to create multiple outfits. At our men’s online shop we have brought together an exhaustive range of products from the best men’s brands. Here is a list of must-haves from the wide variety of awesome products at Myntra:</p>
+           <div>
+           <ol>
+               <li> <span> Smart men’s clothing </span> - At Myntra you will find myriad options in smart formal shirts and trousers, cool T-shirts and jeans, or kurta and pyjama combinations for men. Wear your attitude with printed T-shirts. Create the back-to-campus vibe with varsity T-shirts and distressed jeans. Be it gingham, buffalo, or window-pane style, checked shirts are unbeatably smart. Team them up with chinos, cuffed jeans or cropped trousers for a smart casual look. Opt for a stylish layered look with biker jackets. Head out in cloudy weather with courage in water-resistant jackets. Browse through our innerwear section to find supportive garments which would keep you confident in any outfit.</li>
+               <li> <span> Trendy women’s clothing </span>- Online shopping for women at Myntra is a mood-elevating experience. Look hip and stay comfortable with chinos and printed shorts this summer. Look hot on your date dressed in a little black dress, or opt for red dresses for a sassy vibe. Striped dresses and T-shirts represent the classic spirit of nautical fashion. Choose your favourites from among Bardot, off-shoulder, shirt-style, blouson, embroidered and peplum tops, to name a few. Team them up with skinny-fit jeans, skirts or palazzos. Kurtis and jeans make the perfect fusion-wear combination for the cool urbanite. Our grand sarees and lehenga-choli selections are perfect to make an impression at big social events such as weddings. Our salwar-kameez sets, kurtas and Patiala suits make comfortable options for regular wear.
+
+              </li>
+               <li> <span> Fashionable footwear </span> - While clothes maketh the man, the type of footwear you wear reflects your personality. We bring you an exhaustive lineup of options in casual shoes for men, such as sneakers and loafers. Make a power statement at work dressed in brogues and oxfords. Practice for your marathon with running shoes for men and women. Choose shoes for individual games such as tennis, football, basketball, and the like. Or step into the casual style and comfort offered by sandals, sliders, and flip-flops. Explore our lineup of fashionable footwear for ladies, including pumps, heeled boots, wedge-heels, and pencil-heels. Or enjoy the best of comfort and style with embellished and metallic flats.
+            </li>
+           </ol>
+          </div>
+           <p>Make sure you check out fun printed men’s T-shirts featuring your favourite characters from DC Comics and Marvel studios. Relive the magic of your favourite superhero from Justice League. Fly high with Superman, battle the bad guys with Batman, or get trendy in lightning-speed with a Flash T-shirt. Grab our cool Marvel Avengers T-shirts. Stay powered up with the Iron Man, or walk with the warriors in a Thor T-shirt.</p>
+           <p>Our online shopping fashion for mens collection includes even more amazing merchandise such as innerwear, sleepwear, track pants, personal care, wallets, belts and other fashion accessories.</p>
+       </section>
+       <section id="section_6">
+           <h4>men's shopping made easy at myntra</h4>
+           <p>Myntra is the most convenient men’s online store, what with our simplified shopping and payment procedures. With just a few clicks of the mouse or taps on your smartphone, you can buy your favorites from the best men’s brands right away.</p>
+       </section> -->
+    </footer>
+</body>
+
+</html>
+<script src="deals.js"></script>
+<script src="/Common Files/headerMenu.js"></script>
+<script src="/Common Files/corousel.js"></script>
+<script src="../Common Files/hyperlinks.js"></script>
+
+<script>
+    // Chatbot functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotBox = document.getElementById('chatbotBox');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const searchBar = document.getElementById('search_bar');
+        
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', function() {
+            chatbotBox.classList.toggle('chat-visible');
+        });
+        
+        // Send message function
+        function sendUserMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Simulate bot typing
+                simulateTyping();
+                
+                // Process message and respond after a delay
+                setTimeout(() => {
+                    respondToMessage(message);
+                }, 1500);
+            }
+        }
+        
+        // Send message on button click
+        sendMessage.addEventListener('click', sendUserMessage);
+        
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+        
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender + '-message');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Simulate typing indicator
+        function simulateTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('message', 'bot-message', 'typing-indicator');
+            typingDiv.innerHTML = `
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            return typingDiv;
+        }
+        
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        // Process user message and generate response
+        function respondToMessage(message) {
+            removeTypingIndicator();
+            
+            const lowerMessage = message.toLowerCase();
+            let response = '';
+            
+            // Simple response logic - can be expanded with more sophisticated NLP
+            if (lowerMessage.includes('men') || lowerMessage.includes('man') || lowerMessage.includes('guy')) {
+                response = "For men's fashion, I recommend checking out our latest collection of shirts, t-shirts, and jeans. We have great deals on formal wear too! Would you like me to show you some options?";
+            } else if (lowerMessage.includes('women') || lowerMessage.includes('woman') || lowerMessage.includes('ladies')) {
+                response = "Our women's collection has some amazing dresses, tops, and ethnic wear that are trending this season. I can help you find something perfect for any occasion!";
+            } else if (lowerMessage.includes('shoe') || lowerMessage.includes('footwear')) {
+                response = "We have a wide range of footwear from sports shoes to formal wear. What type of shoes are you looking for? Casual, formal, or sports?";
+            } else if (lowerMessage.includes('price') || lowerMessage.includes('discount') || lowerMessage.includes('sale')) {
+                response = "We have ongoing sales with discounts up to 60% on selected items. Check out our 'Deals of the Day' section for the best offers!";
+            } else if (lowerMessage.includes('size') || lowerMessage.includes('fit')) {
+                response = "You can find size guides on each product page. If you need help with sizing, let me know what product you're looking at and I can assist further.";
+            } else if (lowerMessage.includes('return') || lowerMessage.includes('exchange')) {
+                response = "We offer a 30-day return policy for most items. Some products may have different return policies which are mentioned on the product page.";
+            } else {
+                response = "I can help you find great fashion items on Myntra. You can ask me about men's wear, women's wear, shoes, current deals, or anything else!";
+            }
+            
+            addMessage(response, 'bot');
+            
+            // If the message relates to products, add suggestion chips
+            if (lowerMessage.includes('men') || lowerMessage.includes('women') || 
+                lowerMessage.includes('shoe') || lowerMessage.includes('dress')) {
+                addSuggestionChips();
+            }
+        }
+        
+        // Add suggestion chips
+        function addSuggestionChips() {
+            const chipsContainer = document.createElement('div');
+            chipsContainer.classList.add('suggestion-chips');
+            
+            // const suggestions = ['Show me casual shirts', 'Trending dresses', 'Sports shoes', 'Formal wear'];
+            
+            suggestions.forEach(suggestion => {
+                const chip = document.createElement('div');
+                chip.classList.add('chip');
+                chip.textContent = suggestion;
+                chip.addEventListener('click', function() {
+                    chatInput.value = suggestion;
+                    sendUserMessage();
+                });
+                chipsContainer.appendChild(chip);
+            });
+            
+            chatMessages.appendChild(chipsContainer);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Initialize suggestion chips event listeners
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                const query = this.getAttribute('data-query');
+                searchBar.value = query;
+                
+                // Add user message
+                addMessage(`Show me ${query}`, 'user');
+                
+                // Simulate bot response
+                simulateTyping();
+                
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Great choice! I've set up the search for "${query}". You can also check our featured sections above for more options.`, 'bot');
+                }, 1500);
+            });
+        });
+        
+        // Auto-open chatbot after page load
+        setTimeout(() => {
+            if (!sessionStorage.getItem('chatbotShown')) {
+                chatbotBox.classList.add('chat-visible');
+                sessionStorage.setItem('chatbotShown', 'true');
+                
+                // Welcome message after a short delay
+                setTimeout(() => {
+                    // addMessage("Welcome to Myntra! I'm here to help you find the perfect fashion items. What are you looking for today?", 'bot');
+                    addSuggestionChips();
+                }, 500);
+            }
+        }, 3000);
+    });
+</script>
