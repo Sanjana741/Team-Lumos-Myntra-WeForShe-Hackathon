@@ -23,20 +23,8 @@
             color: #505050;
             font-weight: 700;
         }
-        /* Style for the new Connect menu item */
-        #connect {
-            position: relative;
-        }
-        #connect span {
-            position: absolute;
-            top: -8px;
-            right: -18px;
-            background-color: #ff3f6c;
-            color: white;
-            font-size: 10px;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
+        
+       
     </style>
 </head>
 
@@ -58,8 +46,7 @@
             <li><a href="../Homepages/homeLiving.html">home & living</a></li>
             <li><a href="#">beauty</a></li>
             <li id="studio"><a href="#">studio</a><span>new</span></li>
-            <!-- NEW CONNECT MENU ITEM ADDED HERE -->
-            <li id="connect"><a href="#">connect</a><span>new</span></li>
+            <li id="connect"><a href="../try/community.html">connect</a><span>new</span></li>
         </ul> 
         <div id="search">
             <input type="text" id="search_bar" placeholder="Search for products, brands and more">
@@ -96,8 +83,6 @@
                             <a href="../Homepages/homeLiving.html">home & living</a>
                             <a href="#">beauty</a>
                             <a href="#">studio</a>
-                            <!-- ADDED CONNECT TO TOGGLE MENU AS WELL -->
-                            <a href="#">connect</a>
                         </div>
                         <div class="bottom">
                             <i class="fa-regular fa-user fa_user" id="profile"></i>
@@ -177,99 +162,97 @@
     <div id="trending">
     </div>
 
+    <!-- CHATBOT CONTAINER -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fa-regular fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MCIgcj0iNDAiIGZpbGw9IiNmZjNmNmMiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjY1IiByPSI1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNjUiIHI9IjUiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNNzAgMTAwIHEzMCA0MCA2MCAwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik02MCAxNTAgcTAgNDAgODAgMCAiIHN0cm9rZT0iI2ZmM2Y2YyIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSJub25lIi8+PC9zdmc+" alt="Chatbot Avatar">
+                </div>
+                <h3>Myntra Style Assistant</h3>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! 👋 I'm your Myntra style assistant. How can I help you with fashion today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Ask about fashion, products, or deals...">
+                <button id="sendMessage"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
    
-          <!-- FOOTER SECTION -->
-          <footer>
-            <section id="section_1">
-                <div id="left">
+    <!-- FOOTER SECTION -->
+    <footer>
+        <section id="section_1">
+            <div id="left">
+                <div>
+                    <h4>online shopping</h4>
+                    <p>men</p>
+                    <p>women</p>
+                    <p>home & living</p>
+                    <p>beauty</p>
+                    <p>gift cards</p>
+                    <p>myntra insider<span id="latest">New</span></p>
+                </div>
+                <div>
+                  <h4>useful links</h4>
+                  <p>men</p>
+                  <p>faq</p>
+                  <p>t&c</p>
+                  <p>terms of use</p>
+                  <p>track order</p>
+                  <p>shipping</p>
+                  <p>cancellation</p>
+                  <p>returns</p>
+                  <p>whitehat</p>
+                  <p>blog</p>
+                  <p>careers</p>
+                  <p>privacy policy</p>
+                  <p>site map</p>
+                  <p>corporate information</p>
+                </div>
+                <div>
+                    <h4>experience myntra app on mobile</h4>
+                    <img src="https://bit.ly/3LluZ4L" alt="android">
+                    <img src="https://bit.ly/3DmWQys" alt="ios">
+                    <h4 id="social_connect">keep in touch</h4>
                     <div>
-                        <h4>online shopping</h4>
-                        <p>men</p>
-                        <p>women</p>
-                        <p>home & living</p>
-                        <p>beauty</p>
-                        <p>gift cards</p>
-                        <p>myntra insider<span id="latest">New</span></p>
-                    </div>
-                    <div>
-                      <h4>useful links</h4>
-                      <p>men</p>
-                      <p>faq</p>
-                      <p>t&c</p>
-                      <p>terms of use</p>
-                      <p>track order</p>
-                      <p>shipping</p>
-                      <p>cancellation</p>
-                      <p>returns</p>
-                      <p>whitehat</p>
-                      <p>blog</p>
-                      <p>careers</p>
-                      <p>privacy policy</p>
-                      <p>site map</p>
-                      <p>corporate information</p>
-                    </div>
-                    <div>
-                        <h4>experience myntra app on mobile</h4>
-                        <img src="https://bit.ly/3LluZ4L" alt="android">
-                        <img src="https://bit.ly/3DmWQys" alt="ios">
-                        <h4 id="social_connect">keep in touch</h4>
-                        <div>
-                          <i class="fa-brands fa-facebook-square"></i>
-                          <i class="fa-brands fa-twitter-square"></i>
-                          <i class="fa-brands fa-youtube"></i>
-                          <i class="fa-brands fa-instagram"></i>
-                        </div>
+                      <i class="fa-brands fa-facebook-square"></i>
+                      <i class="fa-brands fa-twitter-square"></i>
+                      <i class="fa-brands fa-youtube"></i>
+                      <i class="fa-brands fa-instagram"></i>
                     </div>
                 </div>
-                <div id="right">
-                    <div>
-                        <img src="https://bit.ly/3JPiL47" alt="original">
-                        <p> <span>100% ORIGINAL</span> guarantee for all products at myntra.com</p>
-                    </div>
-                    <div>
-                        <img src="https://bit.ly/3uBalH4" alt="return_policy">
-                        <p><span>Return within 30days</span> of receiving your order</p>
-                    </div>
+            </div>
+            <div id="right">
+                <div>
+                    <img src="https://bit.ly/3JPiL47" alt="original">
+                    <p> <span>100% ORIGINAL</span> guarantee for all products at myntra.com</p>
                 </div>
-            </section>
-            <section id="section_2">
-                <h4>popular searches</h4>
-                <div></div>
-            </section>
-            <section id="section_3">
-              <a href="">sherwani</a><a href="">track pants</a><a href="">blazzers</a><a href="">sweater</a><a href="">jeans</a><a href="">suit</a><a href="">trouser</a><a href="">shalwar</a><a href="">bracelets</a><a href="">sherwani</a><a href="">cargo</a><a href="">shirt</a><a href="">sherwani</a><a href="">shelwar</a><a href="">Bracelets</a><a href="">sherwani</a><a href="">blazzers</a><a href="">sherwani</a><a href="">bracelets</a><a href="">rings</a><a href="">blazzers</a><a href="">sherwani</a><a href="">sherwani</a><a href="">sherwani</a><a href="">blazzers</a><a href="">blazzers</a><a href="">blazzers</a><a href="">shelwar</a><a href="">shalwar</a><a href="">jeans</a>
-            </section>
-            <section id="section_4">
-                <p>In case of any concern <a href="#"> contact us</a></p>
-                <p>&#169; 2022 www.myntra.com. All rights reserved.</p>
-            </section>
-            <hr>
-           <section id="section_5">
-               <h4>men's shopping at myntra: a superior experience</h4>
-               <p>Myntra is one of the best sites when it comes to online shopping for men. The finest of material, superior design and unbeatable style go into the making of our men’s shopping collection. Our range of online shopping men’s wear, accessories, footwear and personal care products are second to none. Compared with other men’s shopping sites, Myntra brings you the best price products which won’t hurt your pocket. With seasonal discounts on trendy casual wear, suits, blazers, sneakers and more, online shopping for men at Myntra just gets even more irresistible!
-              </p>
-           </section>
-           <section id="section_6">
-               <h4>online shopping for men: options unlimited</h4>
-               <p>At Myntra, our online shopping fashion for men collection features plenty of options to create multiple outfits. At our men’s online shop we have brought together an exhaustive range of products from the best men’s brands. Here is a list of must-haves from the wide variety of awesome products at Myntra:</p>
-               <div>
-               <ol>
-                   <li> <span> Smart men’s clothing </span> - At Myntra you will find myriad options in smart formal shirts and trousers, cool T-shirts and jeans, or kurta and pyjama combinations for men. Wear your attitude with printed T-shirts. Create the back-to-campus vibe with varsity T-shirts and distressed jeans. Be it gingham, buffalo, or window-pane style, checked shirts are unbeatably smart. Team them up with chinos, cuffed jeans or cropped trousers for a smart casual look. Opt for a stylish layered look with biker jackets. Head out in cloudy weather with courage in water-resistant jackets. Browse through our innerwear section to find supportive garments which would keep you confident in any outfit.</li>
-                   <li> <span> Trendy women’s clothing </span>- Online shopping for women at Myntra is a mood-elevating experience. Look hip and stay comfortable with chinos and printed shorts this summer. Look hot on your date dressed in a little black dress, or opt for red dresses for a sassy vibe. Striped dresses and T-shirts represent the classic spirit of nautical fashion. Choose your favourites from among Bardot, off-shoulder, shirt-style, blouson, embroidered and peplum tops, to name a few. Team them up with skinny-fit jeans, skirts or palazzos. Kurtis and jeans make the perfect fusion-wear combination for the cool urbanite. Our grand sarees and lehenga-choli selections are perfect to make an impression at big social events such as weddings. Our salwar-kameez sets, kurtas and Patiala suits make comfortable options for regular wear.
-
-                  </li>
-                   <li> <span> Fashionable footwear </span> - While clothes maketh the man, the type of footwear you wear reflects your personality. We bring you an exhaustive lineup of options in casual shoes for men, such as sneakers and loafers. Make a power statement at work dressed in brogues and oxfords. Practice for your marathon with running shoes for men and women. Choose shoes for individual games such as tennis, football, basketball, and the like. Or step into the casual style and comfort offered by sandals, sliders, and flip-flops. Explore our lineup of fashionable footwear for ladies, including pumps, heeled boots, wedge-heels, and pencil-heels. Or enjoy the best of comfort and style with embellished and metallic flats.
-                </li>
-               </ol>
-              </div>
-               <p>Make sure you check out fun printed men’s T-shirts featuring your favourite characters from DC Comics and Marvel studios. Relive the magic of your favourite superhero from Justice League. Fly high with Superman, battle the bad guys with Batman, or get trendy in lightning-speed with a Flash T-shirt. Grab our cool Marvel Avengers T-shirts. Stay powered up with the Iron Man, or walk with the warriors in a Thor T-shirt.</p>
-               <p>Our online shopping fashion for mens collection includes even more amazing merchandise such as innerwear, sleepwear, track pants, personal care, wallets, belts and other fashion accessories.</p>
-           </section>
-           <section id="section_6">
-               <h4>men's shopping made easy at myntra</h4>
-               <p>Myntra is the most convenient men’s online store, what with our simplified shopping and payment procedures. With just a few clicks of the mouse or taps on your smartphone, you can buy your favorites from the best men’s brands right away.</p>
-           </section>
-        </footer>
+                <div>
+                    <img src="https://bit.ly/3uBalH4" alt="return_policy">
+                    <p><span>Return within 30days</span> of receiving your order</p>
+                </div>
+            </div>
+        </section>
+        <section id="section_2">
+            <h4>popular searches</h4>
+            <div></div>
+        </section>
+        <section id="section_3">
+          <a href="">sherwani</a><a href="">track pants</a><a href="">blazzers</a><a href="">sweater</a><a href="">jeans</a><a href="">suit</a><a href="">trouser</a><a href="">shalwar</a><a href="">bracelets</a><a href="">sherwani</a><a href="">cargo</a><a href="">shirt</a><a href="">sherwani</a><a href="">shelwar</a><a href="">Bracelets</a><a href="">sherwani</a><a href="">blazzers</a><a href="">sherwani</a><a href="">bracelets</a><a href="">rings</a><a href="">blazzers</a><a href="">sherwani</a><a href="">sherwani</a><a href="">sherwani</a><a href="">blazzers</a><a href="">blazzers</a><a href="">blazzers</a><a href="">shelwar</a><a href="">shalwar</a><a href="">jeans</a>
+        </section>
+        <section id="section_4">
+            <p>In case of any concern <a href="#"> contact us</a></p>
+            <p>&#169; 2022 www.myntra.com. All rights reserved.</p>
+        </section>
+        <hr>
+    </footer>
 </body>
 
 </html>
@@ -277,3 +260,186 @@
 <script src="/Common Files/headerMenu.js"></script>
 <script src="/Common Files/corousel.js"></script>
 <script src="../Common Files/hyperlinks.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendMessage = document.getElementById('sendMessage');
+    
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener('click', function() {
+        chatbotBox.classList.toggle('chat-visible');
+    });
+    
+    // Send message function
+    function sendUserMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            // Add user message
+            addMessage(message, 'user');
+            chatInput.value = '';
+            
+            // Simulate bot typing
+            simulateTyping();
+            
+            // Generate bot response
+            setTimeout(() => {
+                removeTypingIndicator();
+                const botResponse = generateBotResponse(message);
+                addMessage(botResponse, 'bot');
+            }, 1000);
+        }
+    }
+    
+    // Send message on button click
+    sendMessage.addEventListener('click', sendUserMessage);
+    
+    // Send message on Enter key
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendUserMessage();
+        }
+    });
+    
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender + '-message');
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Simulate typing indicator
+    function simulateTyping() {
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('message', 'bot-message', 'typing-indicator');
+        typingDiv.innerHTML = `
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+        `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return typingDiv;
+    }
+    
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+    
+    // Generate bot response based on user message
+    function generateBotResponse(userMessage) {
+        const lowerMessage = userMessage.toLowerCase();
+        
+        // Greetings
+        if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+            return "Hello! 👋 I'm your Myntra style assistant. How can I help you with fashion today?";
+        }
+        
+        // Help
+        if (lowerMessage.includes('help') || lowerMessage.includes('what can you do')) {
+            return "I can help you with fashion advice, product recommendations, styling tips, and information about Myntra's collections. What would you like to know?";
+        }
+        
+        // Men's fashion
+        if (lowerMessage.includes('men') || lowerMessage.includes('man') || lowerMessage.includes('guy')) {
+            if (lowerMessage.includes('casual') || lowerMessage.includes('everyday')) {
+                return "For men's casual wear, I'd recommend checking out our collection of t-shirts, jeans, and casual shirts. We have great options from brands like Roadster, H&M, and HRX!";
+            } else if (lowerMessage.includes('formal') || lowerMessage.includes('office')) {
+                return "For formal wear, we have an excellent selection of shirts, trousers, blazers, and suits. Brands like Van Heusen and Raymond are perfect for office wear!";
+            } else if (lowerMessage.includes('summer') || lowerMessage.includes('hot')) {
+                return "For summer, lightweight cotton shirts, linen trousers, and breathable fabrics are perfect. Check out our summer collection for cool and comfortable options!";
+            } else {
+                return "Our men's collection has everything from casual wear to formal attire. What specific type of clothing are you looking for?";
+            }
+        }
+        
+        // Women's fashion
+        if (lowerMessage.includes('women') || lowerMessage.includes('woman') || lowerMessage.includes('ladies')) {
+            if (lowerMessage.includes('dress') || lowerMessage.includes('gown')) {
+                return "We have a beautiful collection of dresses for every occasion! From casual summer dresses to elegant evening gowns. What type of dress are you looking for?";
+            } else if (lowerMessage.includes('ethnic') || lowerMessage.includes('saree') || lowerMessage.includes('kurta')) {
+                return "Our ethnic wear collection is stunning! We have beautiful sarees, kurtas, and lehengas from brands like Biba, W, and Anouk.";
+            } else if (lowerMessage.includes('western') || lowerMessage.includes('tops') || lowerMessage.includes('jeans')) {
+                return "For western wear, we have trendy tops, jeans, skirts, and more. Check out our latest collection from brands like H&M, Mango, and Forever 21!";
+            } else {
+                return "Our women's collection is diverse and trendy! Are you looking for ethnic wear, western wear, or something specific?";
+            }
+        }
+        
+        // Shoes
+        if (lowerMessage.includes('shoe') || lowerMessage.includes('footwear')) {
+            if (lowerMessage.includes('sports') || lowerMessage.includes('running')) {
+                return "For sports shoes, we have great options from Nike, Adidas, Puma, and more. What activity are you planning to use them for?";
+            } else if (lowerMessage.includes('formal') || lowerMessage.includes('office')) {
+                return "Our formal shoe collection includes leather shoes, loafers, and more from brands like Hush Puppies, Bata, and Red Tape.";
+            } else if (lowerMessage.includes('casual') || lowerMessage.includes('sneaker')) {
+                return "Casual sneakers are perfect for everyday wear! We have trendy options from brands like Puma, Skechers, and Campus.";
+            } else {
+                return "We have a wide variety of footwear! Are you looking for sports shoes, formal shoes, or casual sneakers?";
+            }
+        }
+        
+        // Deals and discounts
+        if (lowerMessage.includes('sale') || lowerMessage.includes('discount') || lowerMessage.includes('deal') || lowerMessage.includes('offer')) {
+            return "We have amazing deals right now! Check out our 'Deals of the Day' section for discounts up to 60% on selected items. There's also an ongoing end-of-season sale!";
+        }
+        
+        // Returns and policies
+        if (lowerMessage.includes('return') || lowerMessage.includes('exchange') || lowerMessage.includes('refund')) {
+            return "We offer a hassle-free 30-day return policy on most items. Some products may have specific return conditions mentioned on their product pages.";
+        }
+        
+        // Sizing
+        if (lowerMessage.includes('size') || lowerMessage.includes('fit') || lowerMessage.includes('measurement')) {
+            return "You can find detailed size charts on each product page. If you need help with sizing, let me know what product you're looking at and your measurements!";
+        }
+        
+        // Delivery
+        if (lowerMessage.includes('delivery') || lowerMessage.includes('shipping') || lowerMessage.includes('arrive')) {
+            return "We offer standard delivery within 3-7 business days. Express delivery is available for select pin codes. You can track your order from your account once shipped!";
+        }
+        
+        // General fashion advice
+        if (lowerMessage.includes('trend') || lowerMessage.includes('fashion') || lowerMessage.includes('style')) {
+            return "This season, pastel colors, oversized fits, and sustainable fashion are trending! Would you like recommendations for a specific occasion?";
+        }
+        
+        // Thank you responses
+        if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+            return "You're welcome! 😊 Is there anything else I can help you with today?";
+        }
+        
+        // Default response
+        const defaultResponses = [
+            "I'd love to help you with that! Could you tell me a bit more about what you're looking for?",
+            "That's interesting! Are you shopping for yourself or as a gift?",
+            "I can help you find the perfect fashion items! What specific type of clothing or accessories are you interested in?",
+            "Great question! Let me help you with some fashion recommendations. What's your preferred style?"
+        ];
+        
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+    
+    // Auto-open chatbot after page load
+    setTimeout(() => {
+        if (!sessionStorage.getItem('chatbotShown')) {
+            chatbotBox.classList.add('chat-visible');
+            sessionStorage.setItem('chatbotShown', 'true');
+        }
+    }, 3000);
+});
+</script>
+
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-230d22f3-ef38-44fb-9905-f8152ab430fc" data-elfsight-app-lazy></div>
